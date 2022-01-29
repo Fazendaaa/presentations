@@ -64,11 +64,25 @@ class: center, middle
 
 ## Cultura dos 5S:
 
-- __Seiri__ (**Organizar**): saber o quando e o quê;
-- __Seiton__ (**Esquematizar**): tudo tem seu lugar;
-- __Seiso__ (**Destacar**): tudo tem voz própria;
-- __Siketsu__ (**Padronizar**): seguir as regras;
-- __Shutsuke__ (**Auto-disciplina**): análise crítica e ser aberto a mudanças.
+- _Seiri_ (**Organizar**): saber o quando e o quê;
+- _Seiton_ (**Esquematizar**): tudo tem seu lugar;
+- _Seiso_ (**Destacar**): tudo tem voz própria;
+- _Siketsu_ (**Padronizar**): seguir as regras;
+- _Shutsuke_ (**Auto-disciplina**): análise crítica e ser aberto a mudanças.
+
+<iframe src="https://giphy.com/embed/9Y6ZRYDjHbY6w8LA9C" width="320" height="320" frameBorder="0" class="giphy-embed"></iframe>
+
+---
+
+## Antes de começar
+
+- __Semantic Versioning__ (SemVer):
+    - 1.X.X - majors
+    - X.2.X - minors
+    - X.X.3 - patches/fixes/bugs
+
+<iframe src="https://giphy.com/embed/YQitE4YNQNahy" width="480" height="270" frameBorder="0" class="giphy-embed"
+  allowFullScreen></iframe>
 
 ---
 
@@ -82,9 +96,18 @@ class: center, middle
 
 ## Continuos Integration (CI)
 
+- Processo de:
+  - rodar testes
+  - gerar documentacao
+  - notificar projetos dependentes
+
 ---
 
-## Continuos Development (CD)
+## Continuos Development/Development (CD)
+
+- Processo de:
+  - atualizar o codigo
+  - gerar "builds"
 
 ---
 
@@ -96,17 +119,69 @@ class: center, middle
 
 ## Código
 
-### Rodar Localmente
+### Integrar Localmente
 
 #### Github
 
-##### Servidor
+##### CI + CD
 
+- Kubernetes
+- Github
+- Intra do cliente
+- etc
 </pre>
 
 ---
 
+## Exemplos
 
+`pacote/testes/testthat/test.soma.R` :
+
+```R
+test_that('#1 teste', {
+  expect_equal(somaPositiva(1, 2), 3)
+})
+
+test_that('#2 teste', {
+  expect_error(somaPositiva(-1, 2), 'primeiro parametro é negativo')
+})
+```
+
+`pacote/R/soma.R` :
+
+```R
+somaPositiva__ <- function(a, b) a + b
+
+somaPositiva <- function(a, b) {
+  if (a < 0) {
+    stop('primeiro parametro é negativo')
+  }
+  if (b < 0) {
+    stop('segundo parametro é negativo')
+  }
+
+  return (somaPositiva__(a, b))
+}
+```
+
+---
+
+## Exemplos
+
+- No exemplo anterior o equivalente poderia ser feito para `warning` ao invés de `stop` e, consequentemente, `expect_warning` ao invés de `expect_error`
+
+---
+
+## Pontos importantes
+
+- Por mais que geralmente o CI seja visto como _"O Primeiro Passo"_ e CD o _"Segundo"_, não há uma ordem
+
+---
+
+## Referência das images
+
+- [pattern wood](https://giphy.com/gifs/pattern-wood-clothes-9Y6ZRYDjHbY6w8LA9C)
+- [hacker hacking](https://giphy.com/gifs/YQitE4YNQNahy)
 
 ---
 
