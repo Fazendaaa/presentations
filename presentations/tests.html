@@ -43,6 +43,13 @@
       display: table;
     }
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/d3@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.7.11/dist/browser/view.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.7.11/dist/browser/transform.min.js"></script>
+  <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.7.11/dist/browser/view.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.7.11/dist/browser/transform.min.js"></script>
 </head>
 
 <body>
@@ -50,7 +57,7 @@
 
 class: center, middle
 
-# Tests
+# Testes
 ##### Fazenda
 
 ---
@@ -65,7 +72,41 @@ class: center, middle
 
 ---
 
-## Test Driven Development
+## Test Driven Development (TDD)
+### Escreva testes primeiro para depois escrever o código
+
+- 40%-90% maior produtividade -- [pesquisa](https://www.microsoft.com/en-us/research/wp-content/uploads/2009/10/Realizing-Quality-Improvement-Through-Test-Driven-Development-Results-and-Experiences-of-Four-Industrial-Teams-nagappan_tdd.pdf) da Microsoft
+- Redução de viés -- Interfaces de comunicação claras
+
+---
+
+## Continuos Integration (CI)
+
+---
+
+## Continuos Development (CD)
+
+---
+
+## CI + CD
+
+<svg id="mindmap" style="width: 800px; height: 400px"></svg>
+<pre id="mm" hidden>
+# Testes
+
+## Código
+
+### Rodar Localmente
+
+#### Github
+
+##### Servidor
+
+</pre>
+
+---
+
+
 
 ---
 
@@ -87,10 +128,12 @@ class: center, middle
 </div>
 
     </textarea>
-  <script src="https://remarkjs.com/downloads/remark-latest.min.js">
-  </script>
   <script>
-    var slideshow = remark.create();
+    const slideshow = remark.create();
+    const markdown = document.getElementById("mm").innerHTML;
+    const data = markmap.transform(markdown);
+
+    markmap.Markmap.create("#mindmap", null, data);
   </script>
 </body>
 
